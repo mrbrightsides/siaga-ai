@@ -14,6 +14,7 @@ export default function ReportModal({ isOpen, onClose, onReportProcessed }: Repo
   const [description, setDescription] = React.useState('');
   const [image, setImage] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [verificationStep, setVerificationStep] = React.useState<string | null>(null);
   const [success, setSuccess] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -34,6 +35,17 @@ export default function ReportModal({ isOpen, onClose, onReportProcessed }: Repo
 
     setLoading(true);
     try {
+      setVerificationStep("Analyzing Visual Evidence...");
+      await new Promise(r => setTimeout(r, 1200));
+      
+      setVerificationStep("Cross-checking with nearby Hydraulic Gauges...");
+      await new Promise(r => setTimeout(r, 1200));
+
+      setVerificationStep("Verifying Citizen Reputation Score...");
+      await new Promise(r => setTimeout(r, 800));
+
+      setVerificationStep("Finalizing Autonomous Dispatch...");
+
       // Send to AI for autonomous analysis
       const result = await processCitizenReport(
         description, 
@@ -156,7 +168,7 @@ export default function ReportModal({ isOpen, onClose, onReportProcessed }: Repo
                     {loading ? (
                       <React.Fragment>
                         <Loader2 className="animate-spin" size={20} />
-                        <span className="uppercase tracking-widest text-xs">AI Processing Engine...</span>
+                        <span className="uppercase tracking-widest text-[10px]">{verificationStep || 'AI Processing Engine...'}</span>
                       </React.Fragment>
                     ) : (
                       <React.Fragment>

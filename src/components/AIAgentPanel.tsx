@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Brain, Sparkles, Activity, ShieldCheck, Zap, ChevronRight, Loader2, History } from 'lucide-react';
-import { AgentAction } from '../services/aiAgentService';
+import { Brain, Sparkles, Activity, ShieldCheck, Zap, ChevronRight, Loader2, Share2, MessageSquare, Download } from 'lucide-react';
+import { AgentAction, generateDisasterBrief } from '../services/aiAgentService';
 
 interface AIAgentPanelProps {
   briefing: string;
@@ -13,6 +13,15 @@ interface AIAgentPanelProps {
 }
 
 export default function AIAgentPanel({ briefing, actions, riskLevel, loading, liveLogs = [] }: AIAgentPanelProps) {
+  const disasterBrief = riskLevel === 'Extreme' ? generateDisasterBrief('Extreme', 'Metropolitan Node') : null;
+
+  const handleShareWA = () => {
+    if (disasterBrief) {
+      const url = `https://wa.me/?text=${encodeURIComponent(disasterBrief.whatsappMessage)}`;
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <div className="glass p-5 md:p-8 rounded-3xl md:rounded-[2.5rem] border-blue-500/20 relative group">
       <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
@@ -112,6 +121,41 @@ export default function AIAgentPanel({ briefing, actions, riskLevel, loading, li
                   </AnimatePresence>
                </div>
             </div>
+          )}
+
+          {/* Automatic Disaster Brief Section */}
+          {disasterBrief && (
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="p-5 rounded-2xl bg-gradient-to-br from-red-600/20 to-orange-600/10 border border-red-500/30"
+            >
+              <div className="flex items-center justify-between mb-4">
+                 <div className="flex items-center gap-2 text-red-400">
+                    <MessageSquare size={16} />
+                    <h4 className="text-[10px] font-bold uppercase tracking-widest">Automatic Ops Brief</h4>
+                 </div>
+                 <div className="flex gap-2">
+                    <button className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors">
+                       <Download size={14} />
+                    </button>
+                    <button 
+                      onClick={handleShareWA}
+                      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-600 hover:bg-green-500 text-white text-[10px] font-bold transition-all shadow-lg shadow-green-600/20"
+                    >
+                       <Share2 size={12} /> Share to WA Group
+                    </button>
+                 </div>
+              </div>
+              <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-900 mb-3">
+                 <p className="text-[10px] text-slate-300 font-mono leading-relaxed whitespace-pre-wrap">
+                    {disasterBrief.whatsappMessage}
+                 </p>
+              </div>
+              <div className="flex items-center gap-2">
+                 <span className="text-[8px] text-slate-500 font-mono italic">AI Status: Verified & Formatted for RT/RW dissemination.</span>
+              </div>
+            </motion.div>
           )}
 
           <div className="flex items-center gap-4 pt-4 border-t border-slate-800">

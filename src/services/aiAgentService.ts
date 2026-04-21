@@ -104,3 +104,40 @@ export async function processCitizenReport(description: string, imageBase64?: st
     };
   }
 }
+
+export interface PredictiveAlert {
+  location: string;
+  source: string;
+  eta: string;
+  recommendation: string;
+  severity: 'Low' | 'Medium' | 'High' | 'Extreme';
+}
+
+export function getPredictiveAlert(): PredictiveAlert | null {
+  // Simulated prediction based on Katulampa data trends
+  return {
+    location: "Kawasan Bidara Cina & Kampung Melayu",
+    source: "Pintu Air Katulampa (Level Siaga 1)",
+    eta: "3.5 Hours",
+    recommendation: "Segera evakuasi kendaraan ke lokasi parkir darurat yang lebih tinggi (Area GOR Tebet).",
+    severity: 'Extreme'
+  };
+}
+
+export interface DisasterBrief {
+  title: string;
+  summary: string;
+  whatsappMessage: string;
+  affectedZones: string[];
+}
+
+export function generateDisasterBrief(severity: string, location: string): DisasterBrief {
+  const message = `🚨 *SIAGA JALAN: EMERGENCY ALERT* 🚨\n\nStatus: *${severity.toUpperCase()}*\nLokasi: *${location}*\n\nAnalisis AI: Debit air meningkat drastis. Seluruh warga diharapkan segera mengamankan aset berharga dan parkir kendaraan di zona radius aman (Peta tersedia di aplikasi).\n\nCek rute aman: https://siaga-ai.vercel.app/routes`;
+  
+  return {
+    title: `Ops Brief: ${location}`,
+    summary: `AI Agentic system has detected ${severity} flood conditions. Predictive models show high risk in surrounding corridors.`,
+    whatsappMessage: message,
+    affectedZones: [location, 'Radius 500m']
+  };
+}
