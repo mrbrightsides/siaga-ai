@@ -64,7 +64,7 @@ export default function Sidebar({ activeTab, setActiveTab, isOpen, onClose, onGo
             </div>
             <div>
               <h1 className="text-xl font-bold tracking-tighter leading-none">SIAGA Jalan</h1>
-              <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1 font-mono">Flood Intelligence</p>
+              <p className="text-[9px] text-slate-500 uppercase tracking-tight mt-1 font-mono leading-tight">Agentic Geospatial Analytic</p>
             </div>
           </div>
         </div>

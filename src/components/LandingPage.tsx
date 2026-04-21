@@ -53,7 +53,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                 </span>
-                Agentic Intelligence System v2.4
+                SIAGA: Sistem Informasi Agentic Geospatial Analytic
               </div>
               
               <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-white mb-8 leading-[0.9]">
@@ -62,7 +62,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
               </h1>
               
               <p className="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed">
-                Floods cost Jakarta billions and lives every year. SIAGA Jalan transforms chaotic citizen reports and sensor data into 
+                <span className="text-white font-semibold">SIAGA (Sistem Informasi Agentic Geospatial Analytic)</span> transforms chaotic citizen reports and sensor data into 
                 <span className="text-white font-medium"> actionable intelligence</span> using proprietary agentic AI.
               </p>
 

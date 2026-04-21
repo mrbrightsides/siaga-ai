@@ -1,6 +1,6 @@
 {
   "name": "SIAGA Jalan",
-  "description": "Sistem Informasi AI untuk Monitoring dan Prediksi Banjir pada Jalan Perkotaan. Platform cerdas untuk pemantauan real-time, prediksi risiko banjir, dan optimasi rute perjalanan yang lebih aman menggunakan AI.",
+  "description": "SIAGA (Sistem Informasi Agentic Geospatial Analytic) Jalan. Platform cerdas untuk pemantauan real-time, prediksi risiko banjir, dan optimasi rute perjalanan yang lebih aman menggunakan AI Agentic Geospatial.",
   "requestFramePermissions": [
     "camera"
   ],
