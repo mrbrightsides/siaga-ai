@@ -123,7 +123,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                   {showVideo ? (
                     <iframe 
                       className="w-full h-full"
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" /* Placeholder - user can replace */
+                      src="https://www.dailymotion.com/embed/video/x6ebn59?autoplay=1"
                       title="Operational Footage"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
