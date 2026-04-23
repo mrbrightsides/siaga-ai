@@ -132,7 +132,7 @@ export interface DisasterBrief {
 }
 
 export function generateDisasterBrief(severity: string, location: string): DisasterBrief {
-  const message = `🚨 *SIAGA JALAN: EMERGENCY ALERT* 🚨\n\nStatus: *${severity.toUpperCase()}*\nLokasi: *${location}*\n\nAnalisis AI: Debit air meningkat drastis. Seluruh warga diharapkan segera mengamankan aset berharga dan parkir kendaraan di zona radius aman (Peta tersedia di aplikasi).\n\nCek rute aman: https://siaga-ai.vercel.app/routes`;
+  const message = `🚨 *SIAGA JALAN: EMERGENCY ALERT* 🚨\n\nStatus: *${severity.toUpperCase()}*\nLokasi: *${location}*\n\nAnalisis AI: Debit air meningkat drastis. Seluruh warga diharapkan segera mengamankan aset berharga dan parkir kendaraan di zona radius aman (Peta tersedia di aplikasi).\n\nCek rute aman: https://siaga-ai.vercel.app`;
   
   return {
     title: `Ops Brief: ${location}`,
